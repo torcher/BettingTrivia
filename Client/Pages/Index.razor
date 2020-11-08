@@ -1,0 +1,16 @@
+﻿@page "/"
+@using BettingTrivia.Shared
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<h1>Welcome to Betting Trivia!</h1>
+
+<button @onclick="CreateNewRoom">Create New Room</button>
+
+@code{
+    private async Task CreateNewRoom()
+    {
+        var newRoom = await (await Http.PostAsync("api/room", new StringContent(""))).ParseHTTPResponse<BettingTrivia.Shared.Room>();
+        NavigationManager.NavigateTo("/room/" + newRoom.ID);
+    }
+}

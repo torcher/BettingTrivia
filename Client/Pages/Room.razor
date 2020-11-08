@@ -1,0 +1,11 @@
+﻿@page "/room/{RoomId:guid}"
+
+<h3>Room</h3>
+
+<span>Room Code</span>
+<span>@RoomID</span>
+
+@code {
+    [Parameter]
+    public Guid RoomID { get; set; }
+}
